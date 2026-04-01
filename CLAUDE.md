@@ -52,6 +52,7 @@ A git pre-commit hook runs `vp staged` which executes `vp check --fix` on staged
 ## CI
 
 GitHub Actions (`.github/workflows/ci.yml`) runs on PRs and pushes to `main`:
+
 1. Lint & format check (`vp check`)
 2. Tests (`vp test`)
 3. Build (`vp pack`)
