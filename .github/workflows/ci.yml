@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
-      - uses: voidzero-dev/setup-vp@812ad344f6904492ab3f60c92bbee701018f6dcd # v1
+      - uses: voidzero-dev/setup-vp@e34774bccb4e7d7f2e23514ca980177a71425e43 # v1
         with:
           node-version: "lts"
           cache: true
