@@ -45,6 +45,17 @@ tests/
 - **Error handling**: The library throws `JA4ParseError` (extends `Error`) for invalid inputs. All validation is in `parser.ts`.
 - **Test imports**: Tests import from `"vite-plus/test"` for `describe`, `expect`, `test`.
 
+## Important: Always Run Linters
+
+Before committing any changes, always run the linter and tests to verify everything passes:
+
+```bash
+pnpm run check        # Must pass — lint + format check
+pnpm test             # Must pass — all tests green
+```
+
+If `pnpm run check` fails with formatting issues, run `pnpm exec vp check --fix` to auto-fix, then re-run `pnpm run check` to confirm.
+
 ## Pre-commit Hook
 
 A git pre-commit hook runs `vp staged` which executes `vp check --fix` on staged files (configured in `vite.config.ts` under `staged`). This runs linting and formatting automatically before commits.
@@ -52,6 +63,7 @@ A git pre-commit hook runs `vp staged` which executes `vp check --fix` on staged
 ## CI
 
 GitHub Actions (`.github/workflows/ci.yml`) runs on PRs and pushes to `main`:
+
 1. Lint & format check (`vp check`)
 2. Tests (`vp test`)
 3. Build (`vp pack`)
