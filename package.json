@@ -33,6 +33,7 @@
     "prepare": "vp config && skills-npm"
   },
   "devDependencies": {
+    "@codspeed/vitest-plugin": "^5.2.0",
     "@types/node": "^25.5.0",
     "@typescript/native-preview": "7.0.0-dev.20260401.1",
     "bumpp": "^11.0.1",
