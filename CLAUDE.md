@@ -67,8 +67,10 @@ A git pre-commit hook runs `vp staged` which executes `vp check --fix` on staged
 
 ## CI
 
-GitHub Actions (`.github/workflows/ci.yml`) runs on PRs and pushes to `main`:
+GitHub Actions (`.github/workflows/ci.yml`) runs on PRs and pushes to `main` using `voidzero-dev/setup-vp@v1` (handles Node.js, pnpm, and caching):
 
 1. Lint & format check (`vp check`)
 2. Tests (`vp test`)
-3. Build (`vp pack`)
+3. Build (`vp pack` — this is a library, not a web app, so use `vp pack` instead of `vp build`)
+
+Double quotes are required in YAML and JSON files (enforced by the formatter).
