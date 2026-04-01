@@ -57,6 +57,10 @@ vp test     # Must pass — all tests green
 
 If `vp check` fails with formatting issues, run `vp check --fix` to auto-fix, then re-run to confirm.
 
+## Agent Skills
+
+[skills-npm](https://github.com/antfu/skills-npm) discovers agent skills bundled in npm packages and symlinks them for coding agents. It runs automatically during `prepare` (after `vp install`). Skills from installed packages appear under `skills/npm-*`.
+
 ## Pre-commit Hook
 
 A git pre-commit hook runs `vp staged` which executes `vp check --fix` on staged files (configured in `vite.config.ts` under `staged`). This runs linting and formatting automatically before commits.
