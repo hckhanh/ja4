@@ -16,14 +16,15 @@ A JA4 fingerprint has the format `{sectionA}_{sectionB}_{sectionC}` (e.g. `t13d1
 
 ## Commands
 
-```bash
-pnpm install          # Install dependencies
-pnpm test             # Run tests (vitest via vp)
-pnpm run check        # Lint + format check (eslint + prettier via vp)
-pnpm run build        # Build library to dist/ (vp pack)
-```
+Prefer using the `vp` CLI directly via `pnpm exec`. Only use `pnpm` for tasks `vp` does not cover (e.g. `pnpm install`).
 
-All `vp` commands can also be run directly: `pnpm exec vp test`, `pnpm exec vp check`, `pnpm exec vp check --fix`.
+```bash
+pnpm install              # Install dependencies (vp does not cover this)
+pnpm exec vp test         # Run tests (vitest)
+pnpm exec vp check        # Lint + format check (eslint + prettier)
+pnpm exec vp check --fix  # Auto-fix lint + format issues
+pnpm exec vp pack         # Build library to dist/
+```
 
 ## Project Structure
 
@@ -50,11 +51,11 @@ tests/
 Before committing any changes, always run the linter and tests to verify everything passes:
 
 ```bash
-pnpm run check        # Must pass — lint + format check
-pnpm test             # Must pass — all tests green
+pnpm exec vp check    # Must pass — lint + format check
+pnpm exec vp test     # Must pass — all tests green
 ```
 
-If `pnpm run check` fails with formatting issues, run `pnpm exec vp check --fix` to auto-fix, then re-run `pnpm run check` to confirm.
+If `vp check` fails with formatting issues, run `pnpm exec vp check --fix` to auto-fix, then re-run to confirm.
 
 ## Pre-commit Hook
 
