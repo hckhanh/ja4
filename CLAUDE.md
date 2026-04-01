@@ -12,7 +12,9 @@ A JA4 fingerprint has the format `{sectionA}_{sectionB}_{sectionC}` (e.g. `t13d1
 - **Language**: TypeScript 6 (strict mode, ESNext target, NodeNext modules)
 - **Package manager**: pnpm 10.33.0 (declared via `packageManager` field)
 - **Build/test/lint toolchain**: [vite-plus](https://github.com/nicepkg/vite-plus) (`vp` CLI) — wraps Vite, Vitest, and ESLint
-- **Type generation**: Uses `tsgo` (TypeScript native preview) for `.d.ts` generation
+- **Linting**: Type-aware ESLint with type checking enabled (configured in `vite.config.ts` under `lint.options`)
+- **Type generation**: Uses `tsgo` via `@typescript/native-preview` for `.d.ts` generation
+- **Version bumping**: Uses `bumpp` for version management
 
 ## Commands
 
@@ -36,6 +38,20 @@ src/
 tests/
   parser.test.ts  # Vitest test suite
 ```
+
+## Vite-Plus (vp) Details
+
+The `vp` CLI is the single entry point for all dev tasks. Key things to know:
+
+- **`vp install`** — Installs dependencies (runs pnpm install under the hood), then runs `prepare` which calls `vp config && skills-npm`
+- **`vp test`** — Runs Vitest. Test config is in `vite.config.ts` under `test` (e.g. `include: ["tests/**/*.test.ts"]`)
+- **`vp check`** — Runs ESLint + Prettier. Uses type-aware linting with `typeCheck: true` and `typeAware: true`
+- **`vp check --fix`** — Auto-fixes lint and formatting issues
+- **`vp pack`** — Builds the library to `dist/`. Generates `.mjs` output and `.d.ts` types via `tsgo`
+- **`vp staged`** — Runs on pre-commit hook; applies `vp check --fix` to staged files (configured via `staged` in `vite.config.ts`)
+- **`vp config`** — Sets up project configuration (runs during `prepare`)
+- Do NOT use `vp build` — this is a library, so always use `vp pack` for building
+- All configuration lives in `vite.config.ts` using `defineConfig` from `"vite-plus"`
 
 ## Key Conventions
 
