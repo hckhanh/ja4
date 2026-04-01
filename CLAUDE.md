@@ -16,10 +16,10 @@ A JA4 fingerprint has the format `{sectionA}_{sectionB}_{sectionC}` (e.g. `t13d1
 
 ## Commands
 
-Prefer using the `vp` CLI directly via `pnpm exec`. Only use `pnpm` for tasks `vp` does not cover (e.g. `pnpm install`).
+Use the `vp` CLI (via `pnpm exec`) for all tasks:
 
 ```bash
-pnpm install              # Install dependencies (vp does not cover this)
+pnpm exec vp install      # Install dependencies
 pnpm exec vp test         # Run tests (vitest)
 pnpm exec vp check        # Lint + format check (eslint + prettier)
 pnpm exec vp check --fix  # Auto-fix lint + format issues
