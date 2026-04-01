@@ -1,5 +1,7 @@
 # @hckhanh/ja4
 
+[![CodSpeed](https://img.shields.io/endpoint?url=https://codspeed.io/badge.json)](https://codspeed.io/hckhanh/ja4?utm_source=badge)
+
 Parse [JA4 TLS fingerprint](https://github.com/FoxIO-LLC/ja4) strings into structured objects.
 
 ## Install
