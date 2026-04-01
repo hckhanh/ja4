@@ -12,20 +12,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
-
-      - uses: actions/setup-node@v4
+      - uses: voidzero-dev/setup-vp@v1
         with:
-          node-version-file: .node-version
-          cache: pnpm
+          node-version: '22'
+          cache: true
 
-      - run: pnpm install --frozen-lockfile
+      - run: vp install
 
       - name: Lint & format check
-        run: pnpm exec vp check
+        run: vp check
 
       - name: Test
-        run: pnpm exec vp test
+        run: vp test
 
       - name: Build
-        run: pnpm exec vp pack
+        run: vp build
