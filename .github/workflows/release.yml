@@ -4,6 +4,8 @@ on:
   push:
     tags: ["v*"]
 
+permissions: {}
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -11,15 +13,18 @@ jobs:
       contents: write
       id-token: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           fetch-depth: 0
 
-      - uses: voidzero-dev/setup-vp@v1
+      - uses: voidzero-dev/setup-vp@812ad344f6904492ab3f60c92bbee701018f6dcd # v1
         with:
           node-version: "lts"
           cache: true
           registry-url: "https://registry.npmjs.org"
+
+      - name: Install safe-chain
+        run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
 
       - run: vp install
 
