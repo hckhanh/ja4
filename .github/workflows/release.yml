@@ -15,24 +15,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: pnpm/action-setup@v4
-
-      - uses: actions/setup-node@v4
+      - uses: voidzero-dev/setup-vp@v1
         with:
-          node-version-file: .node-version
-          cache: pnpm
-          registry-url: https://registry.npmjs.org
+          node-version: "24"
+          cache: true
+          registry-url: "https://registry.npmjs.org"
 
-      - run: pnpm install --frozen-lockfile
+      - run: vp install
 
       - name: Lint & format check
-        run: pnpm exec vp check
+        run: vp check
 
       - name: Test
-        run: pnpm exec vp test
+        run: vp test
 
       - name: Build
-        run: pnpm exec vp pack
+        run: vp pack
 
       - name: Publish to npm
         run: pnpm publish --provenance --no-git-checks
