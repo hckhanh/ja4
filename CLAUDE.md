@@ -16,14 +16,15 @@ A JA4 fingerprint has the format `{sectionA}_{sectionB}_{sectionC}` (e.g. `t13d1
 
 ## Commands
 
-```bash
-pnpm install          # Install dependencies
-pnpm test             # Run tests (vitest via vp)
-pnpm run check        # Lint + format check (eslint + prettier via vp)
-pnpm run build        # Build library to dist/ (vp pack)
-```
+Use the `vp` CLI for all tasks:
 
-All `vp` commands can also be run directly: `pnpm exec vp test`, `pnpm exec vp check`, `pnpm exec vp check --fix`.
+```bash
+vp install      # Install dependencies
+vp test         # Run tests (vitest)
+vp check        # Lint + format check (eslint + prettier)
+vp check --fix  # Auto-fix lint + format issues
+vp pack         # Build library to dist/
+```
 
 ## Project Structure
 
@@ -50,11 +51,15 @@ tests/
 Before committing any changes, always run the linter and tests to verify everything passes:
 
 ```bash
-pnpm run check        # Must pass — lint + format check
-pnpm test             # Must pass — all tests green
+vp check    # Must pass — lint + format check
+vp test     # Must pass — all tests green
 ```
 
-If `pnpm run check` fails with formatting issues, run `pnpm exec vp check --fix` to auto-fix, then re-run `pnpm run check` to confirm.
+If `vp check` fails with formatting issues, run `vp check --fix` to auto-fix, then re-run to confirm.
+
+## Agent Skills
+
+[skills-npm](https://github.com/antfu/skills-npm) discovers agent skills bundled in npm packages and symlinks them for coding agents. It runs automatically during `prepare` (after `vp install`). Skills from installed packages appear under `skills/npm-*`.
 
 ## Pre-commit Hook
 
