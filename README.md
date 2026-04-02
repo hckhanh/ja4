@@ -5,7 +5,11 @@ Parse [JA4 TLS fingerprint](https://github.com/FoxIO-LLC/ja4) strings into struc
 ## Install
 
 ```sh
+# npm
 npm install @hckhanh/ja4
+
+# JSR
+npx jsr add @hckhanh/ja4
 ```
 
 ## Usage
