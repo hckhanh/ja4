@@ -8,7 +8,7 @@ description: >
   client fingerprinting, or security-related fingerprint analysis.
 type: core
 library: "@hckhanh/ja4"
-library_version: "0.1.1"
+library_version: "0.1.2"
 sources:
   - "hckhanh/ja4:src/parser.ts"
   - "hckhanh/ja4:src/types.ts"
