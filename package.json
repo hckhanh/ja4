@@ -46,13 +46,13 @@
     "prepare": "vp config && skills-npm"
   },
   "devDependencies": {
-    "@tanstack/intent": "^0.0.27",
-    "@types/node": "^25.5.0",
+    "@tanstack/intent": "0.0.27",
+    "@types/node": "25.5.0",
     "@typescript/native-preview": "7.0.0-dev.20260401.1",
-    "bumpp": "^11.0.1",
-    "skills-npm": "^1.1.1",
-    "typescript": "^6.0.2",
-    "vite-plus": "^0.1.14"
+    "bumpp": "11.0.1",
+    "skills-npm": "1.1.1",
+    "typescript": "6.0.2",
+    "vite-plus": "0.1.15"
   },
   "packageManager": "pnpm@10.33.0"
 }
