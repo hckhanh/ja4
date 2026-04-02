@@ -7,3 +7,4 @@
 - **Supply chain protection**: Both workflows use [Aikido safe-chain](https://github.com/AikidoSec/safe-chain) before `vp install` to scan dependencies for malware during installation.
 - **Renovate for action updates**: `renovate.json` is configured to auto-update dependencies including GitHub Actions. When reviewing Renovate PRs for actions, verify the new SHA matches the expected release tag.
 - **Double quotes in YAML**: Use double quotes for all string values (enforced by the formatter).
+- **GitHub Copilot reviews have high hallucination**: Always verify each Copilot review suggestion against the actual code and workflow logic before acting on it. Do not blindly trust Copilot's suggestions — cross-check claims about missing functionality, incorrect commands, or broken behavior.
