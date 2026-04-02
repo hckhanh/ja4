@@ -91,28 +91,48 @@ For GitHub Actions, consider using [`voidzero-dev/setup-vp`](https://github.com/
 
 ## Project Overview
 
-**ja4** is a TypeScript library that parses [JA4 TLS fingerprint](https://github.com/FoxIO-LLC/ja4) strings into structured objects. It is published to npm as an ESM package.
+**ja4** is a TypeScript library that parses [JA4 TLS fingerprint](https://github.com/FoxIO-LLC/ja4) strings into structured objects. It is published to npm (`@hckhanh/ja4`) and JSR (`@hckhanh/ja4`) as an ESM package.
 
-A JA4 fingerprint has the format `{sectionA}_{sectionB}_{sectionC}` (e.g. `t13d1516h2_8daaf6152771_02713d6af862`), where section A is a human-readable descriptor and sections B/C are truncated SHA256 hashes.
+A JA4 fingerprint has the format `{sectionA}_{sectionB}_{sectionC}` (e.g. `t13d1516h2_8daaf6152771_02713d6af862`), where:
+
+- **Section A** (10 chars): Human-readable descriptor encoding protocol, TLS version, SNI, cipher/extension counts, and ALPN.
+- **Section B** (12 chars): Truncated SHA256 hash of sorted cipher suites.
+- **Section C** (12 chars): Truncated SHA256 hash of sorted extensions + signature algorithms.
 
 ## Tech Stack
 
-- **Runtime**: Node.js 24.14.1 (pinned in `.node-version`)
-- **Language**: TypeScript 6 (strict mode, ESNext target, NodeNext modules)
-- **Package manager**: pnpm 10.33.0 (declared via `packageManager` field)
+- **Runtime**: Node.js (pinned in `.node-version`)
+- **Language**: TypeScript (strict mode, ESNext target, NodeNext modules)
+- **Package manager**: pnpm (declared via `packageManager` field in `package.json`)
 - **Build/test/lint toolchain**: [vite-plus](https://github.com/nicepkg/vite-plus) (`vp` CLI)
 - **Type generation**: Uses `tsgo` via `@typescript/native-preview` for `.d.ts` generation
 - **Version bumping**: Uses `bumpp` for version management
+- **Dependency updates**: Renovate (configured in `renovate.json`)
+- **Skills**: Uses `@tanstack/intent` and `skills-npm` for agent skill discovery
 
 ## Project Structure
 
 ```
 src/
-  index.ts      # Public API — re-exports parseJA4 and types
-  parser.ts     # Core parsing logic (parseJA4 function)
-  types.ts      # Type definitions (JA4Fingerprint, JA4SectionA, JA4ParseError)
+  index.ts        # Public API — re-exports parseJA4, JA4ParseError, and types
+  parser.ts       # Core parsing logic (parseJA4 function, parseSectionA helper)
+  types.ts        # Type definitions (JA4Fingerprint, JA4SectionA, JA4ParseError, Protocol, TLSVersion, SNI)
 tests/
-  parser.test.ts  # Vitest test suite
+  parser.test.ts  # Vitest test suite (happy path + validation error cases)
+skills/
+  ja4-parsing/
+    SKILL.md      # TanStack Intent skill definition for agent consumption
+scripts/
+  bump-skill-version.mjs  # Syncs version from package.json into SKILL.md during release
+.claude/
+  rules/          # Granular instructions for AI agents (code-style, testing, toolchain, setup, github-actions)
+.github/
+  workflows/
+    ci.yml              # CI: lint, test, build on PRs and pushes to main
+    release.yml         # Release: publish to npm + JSR on version tags
+    check-skills.yml    # Post-release skill staleness check
+    validate-skills.yml # PR validation for skills/ changes
+    notify-intent.yml   # Triggers skill review on src/docs changes
 ```
 
 ## Key Conventions
@@ -125,18 +145,93 @@ tests/
 - **This is a library**: Always use `vp pack` for building, not `vp build`.
 - All configuration lives in `vite.config.ts` using `defineConfig` from `"vite-plus"`.
 
+## Public API
+
+The library exports one function and associated types from `src/index.ts`:
+
+- `parseJA4(fingerprint: string): JA4Fingerprint` — parses a JA4 string, throws `JA4ParseError` on invalid input.
+- `JA4ParseError` — error class for invalid fingerprints.
+- Types: `JA4Fingerprint`, `JA4SectionA`, `Protocol` (`"TCP" | "QUIC" | "DTLS"`), `TLSVersion` (`"1.0" | "1.1" | "1.2" | "1.3"`), `SNI` (`"domain" | "ip"`).
+
+## Development Workflow
+
+### First-time Setup
+
+```bash
+vp install    # Install dependencies + run prepare (vp config && skills-npm)
+```
+
+Always run `vp install` before doing any other work.
+
+### Day-to-day Commands
+
+```bash
+vp test       # Run tests (Vitest)
+vp check      # Lint + format + type check
+vp check --fix  # Auto-fix lint + format issues
+vp pack       # Build library to dist/
+```
+
+### Before Every Commit
+
+```bash
+vp check      # Must pass
+vp test       # Must pass
+```
+
+A git pre-commit hook runs `vp staged` which executes `vp check --fix` on staged files.
+
+### Testing
+
+- Tests live in `tests/` and use Vitest via `vp test`.
+- Import test utilities from `"vite-plus/test"` (not `vitest`):
+  ```ts
+  import { describe, expect, test } from "vite-plus/test";
+  ```
+- Import source code from `"../src/index.ts"` in tests.
+- Test both happy paths and error cases (JA4ParseError).
+
+### Releasing
+
+Releases use `bumpp` (configured in `bump.config.ts`):
+
+1. `bumpp` bumps version in `package.json` and `jsr.json`.
+2. Runs `scripts/bump-skill-version.mjs` to sync version into `skills/ja4-parsing/SKILL.md`.
+3. Creates a signed, annotated git tag.
+4. CI (`release.yml`) publishes to npm (with provenance) and JSR, then creates a GitHub Release.
+
+### Validating Skills
+
+```bash
+vp exec intent validate skills  # Validate skill files
+vp exec intent stale --json     # Check for stale skills
+```
+
 ## Agent Skills
 
 [skills-npm](https://github.com/antfu/skills-npm) discovers agent skills bundled in npm packages and symlinks them for coding agents. It runs automatically during `prepare` (after `vp install`). Skills from installed packages appear under `skills/npm-*`.
 
-## Pre-commit Hook
+The `skills/ja4-parsing/SKILL.md` file is a [TanStack Intent](https://github.com/TanStack/intent) skill definition that describes the library's API for AI agent consumption. It is versioned alongside the library and checked for staleness after each release.
 
-A git pre-commit hook runs `vp staged` which executes `vp check --fix` on staged files (configured in `vite.config.ts` under `staged`).
+## CI / GitHub Actions
 
-## CI
+### Workflows
 
-GitHub Actions (`.github/workflows/ci.yml`) runs on PRs and pushes to `main` using `voidzero-dev/setup-vp@v1`:
+| Workflow | Trigger | Purpose |
+|---|---|---|
+| `ci.yml` | PRs + pushes to `main` | Lint, test, build |
+| `release.yml` | Tags `v*` | Publish to npm + JSR, create GitHub Release |
+| `check-skills.yml` | Release published, manual | Detect stale skills, open review PR |
+| `validate-skills.yml` | PRs touching `skills/` | Validate skill file structure |
+| `notify-intent.yml` | Pushes to `main` changing `src/` or `docs/` | Trigger skill staleness check |
 
-1. Lint & format check (`vp check`)
-2. Tests (`vp test`)
-3. Build (`vp pack`)
+### CI Conventions
+
+- **Pin third-party actions to commit SHAs** with version comments (e.g. `# v6`).
+- **Top-level `permissions`**: `contents: read` for CI, `permissions: {}` for workflows granting job-level permissions.
+- **Supply chain protection**: All workflows run [Aikido safe-chain](https://github.com/AikidoSec/safe-chain) before `vp install`.
+- **Renovate** manages dependency and GitHub Actions updates (`renovate.json`).
+
+## pnpm Workspace
+
+The project uses a `pnpm-workspace.yaml` with catalog overrides to alias `vite` and `vitest` to their Vite+ equivalents (`@voidzero-dev/vite-plus-core` and `@voidzero-dev/vite-plus-test`). This ensures all tools resolve through Vite+.
