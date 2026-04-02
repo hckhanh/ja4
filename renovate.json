@@ -9,30 +9,27 @@
   "labels": ["dependencies"],
   "packageRules": [
     {
-      "description": "Automerge and group non-major dev dependency updates into a single PR",
-      "matchManagers": ["npm"],
-      "matchDepTypes": ["devDependencies"],
-      "matchUpdateTypes": ["minor", "patch", "digest", "pin"],
-      "groupName": "non-major dev dependencies",
-      "groupSlug": "non-major-dev-deps",
-      "automerge": true,
-      "automergeType": "pr"
+      "description": "Automerge all non-major updates",
+      "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
+      "automerge": true
     },
     {
-      "description": "Group GitHub Actions non-major updates",
+      "description": "Group non-major npm updates",
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["minor", "patch", "digest", "pin"],
+      "groupName": "npm non-major"
+    },
+    {
+      "description": "Group non-major GitHub Actions updates",
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["minor", "patch", "digest", "pinDigest"],
-      "groupName": "GitHub Actions",
-      "groupSlug": "github-actions",
-      "automerge": true,
-      "automergeType": "pr"
+      "groupName": "GitHub Actions non-major"
     },
     {
-      "description": "Group TypeScript-related major updates together",
+      "description": "Group TypeScript major updates",
       "matchPackageNames": ["typescript", "@typescript/native-preview"],
       "matchUpdateTypes": ["major"],
-      "groupName": "TypeScript major",
-      "groupSlug": "typescript-major"
+      "groupName": "TypeScript major"
     }
   ]
 }
