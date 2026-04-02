@@ -1,20 +1,24 @@
-name: CI
+# Validates skill files on PRs that touch the skills/ directory.
+# Ensures frontmatter is correct, names match paths, and files stay under
+# the 500-line limit.
+
+name: Validate Skills
 
 on:
   pull_request:
-    branches: [main]
-  push:
-    branches: [main]
-    tags-ignore: ["v*"]
+    paths:
+      - "skills/**"
 
 permissions:
   contents: read
 
 jobs:
-  test:
+  validate:
+    name: Validate skill files
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
       - uses: voidzero-dev/setup-vp@e34774bccb4e7d7f2e23514ca980177a71425e43 # v1
         with:
@@ -26,11 +30,5 @@ jobs:
 
       - run: vp install
 
-      - name: Lint & format check
-        run: vp check
-
-      - name: Test
-        run: vp test
-
-      - name: Build
-        run: vp pack
+      - name: Validate skills
+        run: vp exec intent validate skills
