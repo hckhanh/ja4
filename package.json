@@ -1,6 +1,6 @@
 {
   "name": "@hckhanh/ja4",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Parse JA4 TLS fingerprint strings into structured objects",
   "keywords": [
     "fingerprint",
