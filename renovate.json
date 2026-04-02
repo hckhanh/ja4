@@ -1,4 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"]
+  "extends": ["config:best-practices", "config:js-lib", ":separateMultipleMajorReleases"],
+  "timezone": "Asia/Ho_Chi_Minh",
+  "schedule": ["* 0-5 * * 1-5"],
+  "automergeSchedule": ["* 9-15 * * 1-5"],
+  "prConcurrentLimit": 5,
+  "postUpdateOptions": ["pnpmDedupe"],
+  "labels": ["dependencies"],
+  "packageRules": []
 }
