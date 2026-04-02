@@ -27,7 +27,7 @@ jobs:
       - run: vp install
 
       - name: Validate skills
-        run: pnpm exec intent validate skills
+        run: vp exec intent validate skills
 
       - name: Lint & format check
         run: vp check
