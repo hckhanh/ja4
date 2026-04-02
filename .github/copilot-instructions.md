@@ -37,7 +37,7 @@ This project uses **Vite+** (`vp` CLI) as its unified toolchain. For day-to-day 
 
 ## GitHub Actions
 
-- **Pin third-party actions to full 40-character commit SHAs**, not version tags. Add a version comment after the SHA (e.g., `uses: actions/checkout@<sha> # v4`).
+- **Pin third-party actions to full 40-character commit SHAs**, not version tags. Add a version comment after the SHA (e.g., `uses: actions/checkout@<sha> # v6`).
 - Every workflow must have a top-level `permissions` block. Use `contents: read` for CI.
 - Never use untrusted context (e.g., `${{ github.event.pull_request.title }}`) directly in `run:` blocks — pass through environment variables.
 - Workflows that run `vp install` should install Aikido safe-chain first for supply chain protection.
