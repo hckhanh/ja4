@@ -2,8 +2,9 @@
   "$schema": "https://jsr.io/schema/config-file.v1.json",
   "name": "@hckhanh/ja4",
   "version": "0.1.4",
+  "description": "Parse JA4 TLS fingerprint strings into structured objects",
   "exports": "./src/index.ts",
   "publish": {
-    "include": ["src/**/*.ts", "jsr.json", "LICENSE"]
+    "include": ["src/**/*.ts", "jsr.json", "LICENSE", "README.md"]
   }
 }
