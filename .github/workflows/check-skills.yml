@@ -9,6 +9,8 @@ name: Check Skills
 on:
   release:
     types: [published]
+  repository_dispatch:
+    types: [skill-check]
   workflow_dispatch: {}
 
 permissions: {}
@@ -39,12 +41,16 @@ jobs:
       - name: Check staleness
         id: stale
         run: |
-          OUTPUT=$(vp exec intent stale --json 2>&1) || true
+          OUTPUT=$(vp exec intent stale --json 2>stale_stderr.log) || true
+          if [ -s stale_stderr.log ]; then
+            echo "stderr from intent stale:" >&2
+            cat stale_stderr.log >&2
+          fi
           echo "$OUTPUT"
 
           # Check if any skills need review
-          NEEDS_REVIEW=$(echo "$OUTPUT" | node -e "
-            const input = require('fs').readFileSync('/dev/stdin','utf8');
+          NEEDS_REVIEW=$(printf '%s\n' "$OUTPUT" | node -e "
+            const input = require('fs').readFileSync(0, 'utf8');
             try {
               const reports = JSON.parse(input);
               const stale = reports.flatMap(r =>
@@ -53,7 +59,10 @@ jobs:
               if (stale.length > 0) {
                 console.log(JSON.stringify(stale));
               }
-            } catch {}
+            } catch (err) {
+              console.error('Failed to parse intent stale output:', err.message);
+              process.exit(1);
+            }
           ")
 
           if [ -z "$NEEDS_REVIEW" ]; then
@@ -87,7 +96,7 @@ jobs:
               '1. Read the current SKILL.md file',
               '2. Check what changed in the library since the skill was last updated',
               '3. Update the skill content to reflect current APIs and behavior',
-              '4. Run \\\`npx @tanstack/intent validate\\\` to verify the updated skill',
+              '4. Run \\\`vp exec intent validate skills\\\` to verify the updated skill',
             ].join('\n');
 
             // Write outputs
@@ -114,9 +123,9 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -b "$BRANCH"
+          git checkout -B "$BRANCH"
           git commit --allow-empty -m "chore: review stale skills for ${VERSION}"
-          git push origin "$BRANCH"
+          git push --force-with-lease origin "$BRANCH"
 
           BODY=$(cat <<PREOF
           ## Stale Skills Detected
@@ -137,8 +146,16 @@ jobs:
           PREOF
           )
 
-          gh pr create \
-            --title "Review stale skills (${VERSION})" \
-            --body "$BODY" \
-            --head "$BRANCH" \
-            --base main
+          # Update existing PR or create a new one
+          EXISTING_PR=$(gh pr list --head "$BRANCH" --json number --jq '.[0].number' 2>/dev/null || true)
+          if [ -n "$EXISTING_PR" ]; then
+            gh pr edit "$EXISTING_PR" \
+              --title "Review stale skills (${VERSION})" \
+              --body "$BODY"
+          else
+            gh pr create \
+              --title "Review stale skills (${VERSION})" \
+              --body "$BODY" \
+              --head "$BRANCH" \
+              --base main
+          fi
