@@ -1,4 +1,4 @@
-# @hckhanh/ja4
+# ja4
 
 Parse [JA4 TLS fingerprint](https://github.com/FoxIO-LLC/ja4) strings into structured objects.
 
