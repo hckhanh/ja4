@@ -72,6 +72,10 @@ try {
 }
 ```
 
+## AI Agents
+
+If you use an AI agent, run `npx @tanstack/intent@latest install`
+
 ## License
 
 [MIT](LICENSE)
