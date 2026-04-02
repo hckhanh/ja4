@@ -9,6 +9,7 @@
     "network",
     "parser",
     "security",
+    "tanstack-intent",
     "tls"
   ],
   "homepage": "https://github.com/hckhanh/ja4#readme",
@@ -22,7 +23,9 @@
     "url": "git+https://github.com/hckhanh/ja4.git"
   },
   "files": [
-    "dist"
+    "dist",
+    "skills",
+    "!skills/_artifacts"
   ],
   "type": "module",
   "exports": {
@@ -38,11 +41,13 @@
     "test": "vp test",
     "check": "vp check",
     "release": "bumpp",
+    "validate:skills": "intent validate skills",
     "prepublishOnly": "vp run build",
     "prepare": "vp config && skills-npm"
   },
   "devDependencies": {
     "@codspeed/tinybench-plugin": "^5.2.0",
+    "@tanstack/intent": "^0.0.27",
     "@types/node": "^25.5.0",
     "@typescript/native-preview": "7.0.0-dev.20260401.1",
     "bumpp": "^11.0.1",
