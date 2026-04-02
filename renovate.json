@@ -27,7 +27,7 @@
     {
       "description": "Group GitHub Actions non-major updates",
       "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "matchUpdateTypes": ["minor", "patch", "digest", "pinDigest"],
       "groupName": "GitHub Actions",
       "groupSlug": "github-actions",
       "automerge": true,
