@@ -2,6 +2,15 @@
   "name": "@hckhanh/ja4",
   "version": "0.1.1",
   "description": "Parse JA4 TLS fingerprint strings into structured objects",
+  "keywords": [
+    "fingerprint",
+    "ja4",
+    "ja4+",
+    "network",
+    "parser",
+    "security",
+    "tls"
+  ],
   "homepage": "https://github.com/hckhanh/ja4#readme",
   "bugs": {
     "url": "https://github.com/hckhanh/ja4/issues"
