@@ -14,6 +14,18 @@
       "automerge": true
     },
     {
+      "description": "Limit @typescript/native-preview to weekly (daily dev builds are extremely noisy)",
+      "matchPackageNames": ["@typescript/native-preview"],
+      "schedule": ["before 6am on monday"],
+      "automerge": true
+    },
+    {
+      "description": "Batch @types/node updates weekly (frequent releases)",
+      "matchPackageNames": ["@types/node"],
+      "schedule": ["before 6am on monday"],
+      "automerge": true
+    },
+    {
       "description": "Group non-major GitHub Actions updates",
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["minor", "patch", "digest", "pinDigest"],
