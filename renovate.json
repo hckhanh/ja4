@@ -10,13 +10,17 @@
   "packageRules": [
     {
       "description": "Automerge non-major dev dependency updates",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["minor", "patch", "digest", "pin"],
       "automerge": true,
       "automergeType": "pr"
     },
     {
       "description": "Group non-major dev dependency updates into a single PR",
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch", "digest", "pin"],
       "groupName": "non-major dev dependencies",
       "groupSlug": "non-major-dev-deps"
     },
@@ -26,7 +30,8 @@
       "matchUpdateTypes": ["minor", "patch", "digest"],
       "groupName": "GitHub Actions",
       "groupSlug": "github-actions",
-      "automerge": true
+      "automerge": true,
+      "automergeType": "pr"
     },
     {
       "description": "Group TypeScript-related major updates together",
