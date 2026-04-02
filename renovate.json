@@ -1,11 +1,41 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:best-practices", "config:js-lib", ":separateMultipleMajorReleases"],
+  "extends": ["config:best-practices", ":pinOnlyDevDependencies", ":separateMultipleMajorReleases"],
   "timezone": "Asia/Ho_Chi_Minh",
   "schedule": ["* 0-5 * * 1-5"],
   "automergeSchedule": ["* 9-15 * * 1-5"],
   "prConcurrentLimit": 5,
   "postUpdateOptions": ["pnpmDedupe"],
   "labels": ["dependencies"],
-  "packageRules": []
+  "packageRules": [
+    {
+      "description": "Automerge all non-major updates",
+      "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
+      "automerge": true
+    },
+    {
+      "description": "Limit @typescript/native-preview to weekly (daily dev builds are extremely noisy)",
+      "matchPackageNames": ["@typescript/native-preview"],
+      "schedule": ["before 6am on monday"],
+      "automerge": true
+    },
+    {
+      "description": "Batch @types/node updates weekly (frequent releases)",
+      "matchPackageNames": ["@types/node"],
+      "schedule": ["before 6am on monday"],
+      "automerge": true
+    },
+    {
+      "description": "Group non-major GitHub Actions updates",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor", "patch", "digest", "pinDigest"],
+      "groupName": "GitHub Actions non-major"
+    },
+    {
+      "description": "Group TypeScript major updates",
+      "matchPackageNames": ["typescript", "@typescript/native-preview"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "TypeScript major"
+    }
+  ]
 }
