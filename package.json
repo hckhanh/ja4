@@ -25,7 +25,8 @@
   "files": [
     "dist",
     "skills",
-    "!skills/_artifacts"
+    "!skills/_artifacts",
+    "!skills/npm-*"
   ],
   "type": "module",
   "exports": {
