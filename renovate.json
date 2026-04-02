@@ -14,12 +14,6 @@
       "automerge": true
     },
     {
-      "description": "Group non-major npm updates",
-      "matchManagers": ["npm"],
-      "matchUpdateTypes": ["minor", "patch", "digest", "pin"],
-      "groupName": "npm non-major"
-    },
-    {
       "description": "Group non-major GitHub Actions updates",
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["minor", "patch", "digest", "pinDigest"],
