@@ -22,12 +22,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
-          fetch-depth: 2
+          fetch-depth: 0
 
       - name: Collect changed files
         id: changes
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
         run: |
-          FILES=$(git diff --name-only HEAD~1 HEAD | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          FILES=$(git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" | jq -R -s -c 'split("\n") | map(select(length > 0))')
           echo "files=$FILES" >> "$GITHUB_OUTPUT"
 
       - name: Dispatch to intent repo

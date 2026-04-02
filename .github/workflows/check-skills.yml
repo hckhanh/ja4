@@ -41,7 +41,9 @@ jobs:
       - name: Check staleness
         id: stale
         run: |
-          OUTPUT=$(vp exec intent stale --json 2>stale_stderr.log) || true
+          set -euo pipefail
+
+          OUTPUT=$(vp exec intent stale --json 2>stale_stderr.log)
           if [ -s stale_stderr.log ]; then
             echo "stderr from intent stale:" >&2
             cat stale_stderr.log >&2
@@ -51,17 +53,12 @@ jobs:
           # Check if any skills need review
           NEEDS_REVIEW=$(printf '%s\n' "$OUTPUT" | node -e "
             const input = require('fs').readFileSync(0, 'utf8');
-            try {
-              const reports = JSON.parse(input);
-              const stale = reports.flatMap(r =>
-                r.skills.filter(s => s.needsReview).map(s => ({ library: r.library, skill: s.name, reasons: s.reasons }))
-              );
-              if (stale.length > 0) {
-                console.log(JSON.stringify(stale));
-              }
-            } catch (err) {
-              console.error('Failed to parse intent stale output:', err.message);
-              process.exit(1);
+            const reports = JSON.parse(input);
+            const stale = reports.flatMap(r =>
+              r.skills.filter(s => s.needsReview).map(s => ({ library: r.library, skill: s.name, reasons: s.reasons }))
+            );
+            if (stale.length > 0) {
+              console.log(JSON.stringify(stale));
             }
           ")
 
