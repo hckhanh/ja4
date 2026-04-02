@@ -28,6 +28,9 @@ jobs:
 
       - run: vp install
 
+      - name: Validate skills
+        run: npx intent validate skills
+
       - name: Lint & format check
         run: vp check
 
