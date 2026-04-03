@@ -221,7 +221,7 @@ The `skills/ja4-parsing/SKILL.md` file is a [TanStack Intent](https://github.com
 |---|---|---|
 | `ci.yml` | PRs + pushes to `main` | Lint, test, build |
 | `release.yml` | Tags `v*` | Publish to npm + JSR, create GitHub Release |
-| `check-skills.yml` | Release published, manual | Detect stale skills, open review PR |
+| `check-skills.yml` | Release published, manual, `repository_dispatch` (`skill-check`) | Detect stale skills, open review PR |
 | `validate-skills.yml` | PRs touching `skills/` | Validate skill file structure |
 | `notify-intent.yml` | Pushes to `main` changing `src/` or `docs/` | Trigger skill staleness check |
 
@@ -229,7 +229,7 @@ The `skills/ja4-parsing/SKILL.md` file is a [TanStack Intent](https://github.com
 
 - **Pin third-party actions to commit SHAs** with version comments (e.g. `# v6`).
 - **Top-level `permissions`**: `contents: read` for CI, `permissions: {}` for workflows granting job-level permissions.
-- **Supply chain protection**: All workflows run [Aikido safe-chain](https://github.com/AikidoSec/safe-chain) before `vp install`.
+- **Supply chain protection**: Workflows that run `vp install` run [Aikido safe-chain](https://github.com/AikidoSec/safe-chain) first.
 - **Renovate** manages dependency and GitHub Actions updates (`renovate.json`).
 
 ## pnpm Workspace
