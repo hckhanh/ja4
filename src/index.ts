@@ -1,8 +1,6 @@
 /**
  * Parse JA4 TLS fingerprint strings into structured objects.
  *
- * @module
- *
  * @example
  * ```ts
  * import { parseJA4 } from "@hckhanh/ja4";
