@@ -217,13 +217,13 @@ The `skills/ja4-parsing/SKILL.md` file is a [TanStack Intent](https://github.com
 
 ### Workflows
 
-| Workflow | Trigger | Purpose |
-|---|---|---|
-| `ci.yml` | PRs + pushes to `main` | Lint, test, build |
-| `release.yml` | Tags `v*` | Publish to npm + JSR, create GitHub Release |
-| `check-skills.yml` | Release published, manual, `repository_dispatch` (`skill-check`) | Detect stale skills, open review PR |
-| `validate-skills.yml` | PRs touching `skills/` | Validate skill file structure |
-| `notify-intent.yml` | Pushes to `main` changing `src/` or `docs/` | Trigger skill staleness check |
+| Workflow              | Trigger                                                          | Purpose                                     |
+| --------------------- | ---------------------------------------------------------------- | ------------------------------------------- |
+| `ci.yml`              | PRs + pushes to `main`                                           | Lint, test, build                           |
+| `release.yml`         | Tags `v*`                                                        | Publish to npm + JSR, create GitHub Release |
+| `check-skills.yml`    | Release published, manual, `repository_dispatch` (`skill-check`) | Detect stale skills, open review PR         |
+| `validate-skills.yml` | PRs touching `skills/`                                           | Validate skill file structure               |
+| `notify-intent.yml`   | Pushes to `main` changing `src/` or `docs/`                      | Trigger skill staleness check               |
 
 ### CI Conventions
 
