@@ -20,11 +20,11 @@ These are the transport protocols that can carry a TLS handshake. **TCP** is the
 
 ### SNI (Server Name Indication)
 
-SNI is a TLS extension that lets the client specify which hostname it is trying to reach. This allows a single IP address to host multiple TLS-secured domains. In JA4, `d` means a domain name was present in SNI, while `i` means only an IP address was used.
+SNI is a TLS extension that lets the client specify which hostname it is trying to reach. This allows a single IP address to host multiple TLS-secured domains. In JA4, `d` means a domain name was present in SNI, while `i` means SNI was not present (often seen when connecting by IP).
 
 ### ALPN (Application-Layer Protocol Negotiation)
 
-ALPN is a TLS extension that lets the client and server agree on an application protocol (e.g. `h2` for HTTP/2, `h1` for HTTP/1.1) during the handshake. JA4 encodes the first and last character of the first ALPN value as a 2-character hint, or `00` if no ALPN extension was present.
+ALPN is a TLS extension that lets the client and server agree on an application protocol (e.g. `h2` for HTTP/2, `h3` for HTTP/3, or `http/1.1` for HTTP/1.1) during the handshake. JA4 encodes the first and last character of the first ALPN value as a 2-character hint such as `h2` or `h1`, or `00` if no ALPN extension was present.
 
 ### Cipher Suites
 
