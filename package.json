@@ -48,7 +48,7 @@
   "devDependencies": {
     "@tanstack/intent": "0.0.29",
     "@types/node": "25.5.2",
-    "@typescript/native-preview": "7.0.0-dev.20260401.1",
+    "@typescript/native-preview": "7.0.0-dev.20260409.1",
     "bumpp": "11.0.1",
     "skills-npm": "1.1.1",
     "typescript": "6.0.2",
