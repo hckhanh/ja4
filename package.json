@@ -52,7 +52,7 @@
     "bumpp": "11.0.1",
     "skills-npm": "1.1.1",
     "typescript": "6.0.2",
-    "vite-plus": "0.1.16"
+    "vite-plus": "0.1.17"
   },
   "packageManager": "pnpm@10.33.0"
 }
