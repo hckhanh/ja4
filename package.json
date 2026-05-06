@@ -46,7 +46,7 @@
     "prepare": "vp config && skills-npm"
   },
   "devDependencies": {
-    "@tanstack/intent": "0.0.36",
+    "@tanstack/intent": "0.0.40",
     "@types/node": "25.6.0",
     "@typescript/native-preview": "7.0.0-dev.20260430.1",
     "bumpp": "11.0.1",
