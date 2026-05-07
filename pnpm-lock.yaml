@@ -13,8 +13,8 @@ importers:
   .:
     devDependencies:
       '@tanstack/intent':
-        specifier: 0.0.36
-        version: 0.0.36
+        specifier: 0.0.40
+        version: 0.0.40
       '@types/node':
         specifier: 25.6.0
         version: 25.6.0
@@ -448,8 +448,8 @@ packages:
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
 
-  '@tanstack/intent@0.0.36':
-    resolution: {integrity: sha512-rtHHeZN+JwnDzPKE++CSwrljNxmJg8Pu5rnZeAB/enxcQrBiUmVthqMqEmJ27sa3Rf/sqE9cPA/7IlNc4ApXKw==}
+  '@tanstack/intent@0.0.40':
+    resolution: {integrity: sha512-ZuUTzr4QrjNuWdv+DfTv0///uONz5+Sw3mR+2xOXHpob6vWsUXnSk3Ht7X9Rpu6zZdQYZlZnJCwN50CAZ21GCw==}
     hasBin: true
 
   '@tybys/wasm-util@0.10.1':
@@ -1251,9 +1251,11 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
-  '@tanstack/intent@0.0.36':
+  '@tanstack/intent@0.0.40':
     dependencies:
       cac: 6.7.14
+      jsonc-parser: 3.3.1
+      semver: 7.7.4
       yaml: 2.8.3
 
   '@tybys/wasm-util@0.10.1':
