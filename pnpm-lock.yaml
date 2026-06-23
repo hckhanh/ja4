@@ -13,8 +13,8 @@ importers:
   .:
     devDependencies:
       '@tanstack/intent':
-        specifier: 0.1.0
-        version: 0.1.0
+        specifier: 0.2.1
+        version: 0.2.1
       '@types/node':
         specifier: 25.9.3
         version: 25.9.3
@@ -452,8 +452,8 @@ packages:
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
 
-  '@tanstack/intent@0.1.0':
-    resolution: {integrity: sha512-CsF2djavFeSwiD8ZSzpKUpgrhuewsFvEjEnleCAxS7r35XVw+klasSBLQMvW80L7PtUgNzub4iNdHVSA9L8Y3A==}
+  '@tanstack/intent@0.2.1':
+    resolution: {integrity: sha512-8LnFSgwaJPnWN6WbyJ/v4H+3XZxXEJIBCb2ZyihZ20tenVLp3KcV156nJKC1jcYqFpYD0MprwW3raKOLsEbDoQ==}
     hasBin: true
 
   '@tybys/wasm-util@0.10.1':
@@ -899,8 +899,8 @@ packages:
     resolution: {integrity: sha512-vfD3pmTzGpufjScBh50YHKzEu2lxBWhVEHsNGoEXmCmn2hKGfeNLYMzCJpe8cD7gqX7TJluOVpBkAequ6dgMmA==}
     engines: {node: '>=4'}
 
-  semver@7.7.4:
-    resolution: {integrity: sha512-vFKC2IEtQnVhpT78h1Yp8wzwrf8CM+MzKMHGJZfBtzhZNycRFnXsHk6E5TxIkkMsgNS7mdX3AGB7x2QM2di4lA==}
+  semver@7.8.5:
+    resolution: {integrity: sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -1028,11 +1028,6 @@ packages:
   xdg-basedir@5.1.0:
     resolution: {integrity: sha512-GCPAHLvrIH13+c0SuacwvRYj2SxJXQ4kaVTT5xgL3kPrz56XxkF21IGhjSE1+W0aw7gpBWRGXLCPnPby6lSpmQ==}
     engines: {node: '>=12'}
-
-  yaml@2.8.3:
-    resolution: {integrity: sha512-AvbaCLOO2Otw/lW5bmh9d/WEdcDFdQp2Z2ZUH3pX9U2ihyUY0nvLv7J6TrWowklRGPYbB/IuIMfYgxaCPg5Bpg==}
-    engines: {node: '>= 14.6'}
-    hasBin: true
 
   yaml@2.9.0:
     resolution: {integrity: sha512-2AvhNX3mb8zd6Zy7INTtSpl1F15HW6Wnqj0srWlkKLcpYl/gMIMJiyuGq2KeI2YFxUPjdlB+3Lc10seMLtL4cA==}
@@ -1276,12 +1271,12 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
-  '@tanstack/intent@0.1.0':
+  '@tanstack/intent@0.2.1':
     dependencies:
       cac: 6.7.14
       jsonc-parser: 3.3.1
-      semver: 7.7.4
-      yaml: 2.8.3
+      semver: 7.8.5
+      yaml: 2.9.0
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
@@ -1421,7 +1416,7 @@ snapshots:
       cac: 7.0.0
       jsonc-parser: 3.3.1
       package-manager-detector: 1.6.0
-      semver: 7.7.4
+      semver: 7.8.5
       tinyexec: 1.1.2
       tinyglobby: 0.2.16
       unconfig: 7.5.0
@@ -1642,7 +1637,7 @@ snapshots:
       extend-shallow: 2.0.1
       kind-of: 6.0.3
 
-  semver@7.7.4: {}
+  semver@7.8.5: {}
 
   sirv@3.0.2:
     dependencies:
@@ -1773,7 +1768,5 @@ snapshots:
   ws@8.20.0: {}
 
   xdg-basedir@5.1.0: {}
-
-  yaml@2.8.3: {}
 
   yaml@2.9.0: {}
