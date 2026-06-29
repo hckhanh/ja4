@@ -13,8 +13,8 @@ importers:
   .:
     devDependencies:
       '@tanstack/intent':
-        specifier: 0.2.1
-        version: 0.2.1
+        specifier: 0.3.2
+        version: 0.3.2
       '@types/node':
         specifier: 25.9.4
         version: 25.9.4
@@ -452,8 +452,8 @@ packages:
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
 
-  '@tanstack/intent@0.2.1':
-    resolution: {integrity: sha512-8LnFSgwaJPnWN6WbyJ/v4H+3XZxXEJIBCb2ZyihZ20tenVLp3KcV156nJKC1jcYqFpYD0MprwW3raKOLsEbDoQ==}
+  '@tanstack/intent@0.3.2':
+    resolution: {integrity: sha512-Apyfkf0O8QqHQJjy/cB1QW2GpYTOyjf98nFAaYtzjBc0V5YzJoy0wnmZSLvwBJxE8/Hhy0Bsa+EPt/fdeJyXkw==}
     hasBin: true
 
   '@tybys/wasm-util@0.10.1':
@@ -922,8 +922,8 @@ packages:
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
 
-  std-env@4.0.0:
-    resolution: {integrity: sha512-zUMPtQ/HBY3/50VbpkupYHbRroTRZJPRLvreamgErJVys0ceuzMkD44J/QjqhHjOzK42GQ3QZIeFG1OYfOtKqQ==}
+  std-env@4.1.0:
+    resolution: {integrity: sha512-Rq7ybcX2RuC55r9oaPVEW7/xu3tj8u4GeBYHBWCychFtzMIr86A7e3PPEBPT37sHStKX3+TiX/Fr/ACmJLVlLQ==}
 
   strip-bom-string@1.0.0:
     resolution: {integrity: sha512-uCC2VHvQRYu+lMh4My/sFNmF2klFymLX1wHJeXnbEJERpV/ZsVuonzerjfrGpIGF7LBVa1O7i9kjiWvJiFck8g==}
@@ -1271,11 +1271,12 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
-  '@tanstack/intent@0.2.1':
+  '@tanstack/intent@0.3.2':
     dependencies:
       cac: 6.7.14
       jsonc-parser: 3.3.1
       semver: 7.8.5
+      std-env: 4.1.0
       yaml: 2.9.0
 
   '@tybys/wasm-util@0.10.1':
@@ -1366,7 +1367,7 @@ snapshots:
       pixelmatch: 7.1.0
       pngjs: 7.0.0
       sirv: 3.0.2
-      std-env: 4.0.0
+      std-env: 4.1.0
       tinybench: 2.9.0
       tinyexec: 1.1.2
       tinyglobby: 0.2.16
@@ -1662,7 +1663,7 @@ snapshots:
 
   sprintf-js@1.0.3: {}
 
-  std-env@4.0.0: {}
+  std-env@4.1.0: {}
 
   strip-bom-string@1.0.0: {}
 
