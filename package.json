@@ -1,6 +1,6 @@
 {
   "name": "@hckhanh/ja4",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Parse JA4 TLS fingerprint strings into structured objects",
   "keywords": [
     "fingerprint",
@@ -12,7 +12,7 @@
     "tanstack-intent",
     "tls"
   ],
-  "homepage": "https://github.com/hckhanh/ja4#readme",
+  "homepage": "https://docs.khanh.id/ja4",
   "bugs": {
     "url": "https://github.com/hckhanh/ja4/issues"
   },

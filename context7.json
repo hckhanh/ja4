@@ -1,0 +1,14 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "ja4",
+  "description": "Parse JA4 TLS fingerprint strings into structured objects.",
+  "folders": [],
+  "excludeFolders": ["node_modules", "dist", "coverage"],
+  "excludeFiles": ["CHANGELOG.md"],
+  "rules": [
+    "Documentation is published at https://docs.khanh.id/ja4.",
+    "Parse fingerprints with parseJA4 from @hckhanh/ja4. Invalid input throws JA4ParseError."
+  ],
+  "url": "https://context7.com/hckhanh/ja4",
+  "public_key": "pk_5wVhL0PTjFlXiZPBk058C"
+}
