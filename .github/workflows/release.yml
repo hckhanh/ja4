@@ -44,7 +44,7 @@ jobs:
         run: npm publish --provenance
 
       - name: Publish to JSR
-        run: npx jsr publish
+        run: npx jsr publish --allow-dirty
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
