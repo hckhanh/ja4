@@ -2,6 +2,8 @@
 
 Parse [JA4 TLS fingerprint](https://github.com/FoxIO-LLC/ja4) strings into structured objects.
 
+Documentation: https://docs.khanh.id/ja4
+
 ## Install
 
 ```sh
