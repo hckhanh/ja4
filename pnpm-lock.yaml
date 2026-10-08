@@ -13,8 +13,8 @@ importers:
   .:
     devDependencies:
       '@tanstack/intent':
-        specifier: 0.4.0
-        version: 0.4.0
+        specifier: 0.5.4
+        version: 0.5.4
       '@types/node':
         specifier: 25.9.9
         version: 25.9.9
@@ -472,8 +472,8 @@ packages:
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
 
-  '@tanstack/intent@0.4.0':
-    resolution: {integrity: sha512-tTmNJ3+R/J+g/aTikTya39W6jVLEoLQbow1xm7j/zIbTbSY+91ypZDFaPAe9wzeHmDopsKIJxzuUSi+yJnzS4Q==}
+  '@tanstack/intent@0.5.4':
+    resolution: {integrity: sha512-veyJDHwIHrylKucn8UgLlMYZbhLZ3gO1OlYiXLcmIKazCd8bTDXRfcWvmwNK3q63jS8K40pYudZV3HQPbHsBWg==}
     engines: {node: '>=20.12.0'}
     hasBin: true
 
@@ -1575,14 +1575,7 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
-  '@tanstack/intent@0.4.0':
-    dependencies:
-      '@clack/prompts': 1.7.0
-      cac: 7.0.0
-      jsonc-parser: 3.3.1
-      semver: 7.8.5
-      std-env: 4.1.0
-      yaml: 2.9.0
+  '@tanstack/intent@0.5.4': {}
 
   '@testing-library/dom@10.4.1':
     dependencies:
