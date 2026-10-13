@@ -24,7 +24,14 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Install safe-chain
-        run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
+        env:
+          SAFE_CHAIN_VERSION: "1.5.25"
+        run: |
+          curl --proto '=https' --proto-redir '=https' -fsSL \
+            "https://github.com/AikidoSec/safe-chain/releases/download/${SAFE_CHAIN_VERSION}/install-safe-chain.sh" \
+            -o "$RUNNER_TEMP/install-safe-chain.sh"
+          echo "83069f6db4215cccf6a26bdd6e65a5c2366b9d24322b2d5d2862d47385e56682  $RUNNER_TEMP/install-safe-chain.sh" | sha256sum --check
+          sh "$RUNNER_TEMP/install-safe-chain.sh" --ci
 
       - run: vp install
 
@@ -38,13 +45,13 @@ jobs:
         run: vp pack
 
       - name: Install npm
-        run: npm install -g npm@latest
+        run: npm install --global --ignore-scripts npm@12.2.0
 
       - name: Publish to npm
         run: npm publish --provenance
 
       - name: Publish to JSR
-        run: npx jsr publish --allow-dirty
+        run: npx --yes --ignore-scripts jsr@0.14.3 publish --allow-dirty
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
