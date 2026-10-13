@@ -85,19 +85,8 @@ function parseSectionA(raw: string): JA4SectionA {
     throw new JA4ParseError(`Invalid SNI "${sniChar}", expected "d" (domain) or "i" (IP)`);
   }
 
-  const cipherCountStr = raw.slice(4, 6);
-  if (!/^\d{2}$/.test(cipherCountStr)) {
-    throw new JA4ParseError(
-      `Invalid cipher suite count "${cipherCountStr}", expected 2-digit number`,
-    );
-  }
-
-  const extensionCountStr = raw.slice(6, 8);
-  if (!/^\d{2}$/.test(extensionCountStr)) {
-    throw new JA4ParseError(
-      `Invalid extension count "${extensionCountStr}", expected 2-digit number`,
-    );
-  }
+  const cipherSuiteCount = parseCount(raw, 4, "cipher suite");
+  const extensionCount = parseCount(raw, 6, "extension");
 
   const alpn = raw.slice(8, 10);
   if (!/^[a-z0-9]{2}$/.test(alpn)) {
@@ -109,8 +98,19 @@ function parseSectionA(raw: string): JA4SectionA {
     protocol,
     tlsVersion,
     sni,
-    cipherSuiteCount: parseInt(cipherCountStr, 10),
-    extensionCount: parseInt(extensionCountStr, 10),
+    cipherSuiteCount,
+    extensionCount,
     alpn,
   };
+}
+
+function parseCount(raw: string, offset: number, label: string): number {
+  const tens = raw.charCodeAt(offset) - 48;
+  const units = raw.charCodeAt(offset + 1) - 48;
+  if (tens < 0 || tens > 9 || units < 0 || units > 9) {
+    throw new JA4ParseError(
+      `Invalid ${label} count "${raw.slice(offset, offset + 2)}", expected 2-digit number`,
+    );
+  }
+  return tens * 10 + units;
 }

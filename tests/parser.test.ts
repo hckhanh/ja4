@@ -67,6 +67,18 @@ describe("parseJA4", () => {
   });
 
   describe("validation errors", () => {
+    test.each(["a1", "1a", " 1", "1 ", "-1", "1\n", "١1", "1١"])(
+      "rejects non-ASCII decimal count %j in either field",
+      (count) => {
+        expect(() => parseJA4(`t13d${count}16h2_8daaf6152771_02713d6af862`)).toThrow(
+          `Invalid cipher suite count "${count}", expected 2-digit number`,
+        );
+        expect(() => parseJA4(`t13d15${count}h2_8daaf6152771_02713d6af862`)).toThrow(
+          `Invalid extension count "${count}", expected 2-digit number`,
+        );
+      },
+    );
+
     test("throws on empty string", () => {
       expect(() => parseJA4("")).toThrow(JA4ParseError);
       expect(() => parseJA4("")).toThrow("non-empty string");
@@ -128,5 +140,15 @@ describe("parseJA4", () => {
       expect(() => parseJA4("t13d1516h2_8daaf6152771_02713d6af86")).toThrow("Section c");
       expect(() => parseJA4("t13d1516h2_8daaf6152771_02713d6af8620")).toThrow("Section c");
     });
+  });
+
+  test("parses every two-digit count including leading zeroes", () => {
+    for (let count = 0; count < 100; count++) {
+      const cipher = String(count).padStart(2, "0");
+      const extension = String(99 - count).padStart(2, "0");
+      const { sectionA } = parseJA4(`t13d${cipher}${extension}h2_8daaf6152771_02713d6af862`);
+      expect(sectionA.cipherSuiteCount).toBe(count);
+      expect(sectionA.extensionCount).toBe(99 - count);
+    }
   });
 });
