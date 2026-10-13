@@ -57,4 +57,4 @@ jobs:
           cycle-estimation: "true"
           exclude-allocations: "false"
           run: pnpm bench
-          mode: ${{ inputs.mode || 'simulation,walltime' }}
+          mode: ${{ inputs.mode || 'simulation' }}
