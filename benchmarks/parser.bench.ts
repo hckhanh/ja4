@@ -1,4 +1,4 @@
-import { afterAll, bench, describe, expect } from "vitest";
+import { afterAll, test, expect } from "vitest";
 import { parseJA4 } from "../src/index.ts";
 
 const reference = "t13d1516h2_8daaf6152771_02713d6af862";
@@ -10,28 +10,28 @@ const batch = Array.from({ length: 100 }, (_, index) => {
 });
 let consumed = 0;
 
-describe("parseJA4", () => {
-  bench("reference fingerprint", () => {
+test("parseJA4", { timeout: 120_000 }, async ({ bench }) => {
+  await bench("reference fingerprint", () => {
     consumed = parseJA4(reference).sectionA.cipherSuiteCount;
-  });
+  }).run();
 
-  bench("all protocols", () => {
+  await bench("all protocols", () => {
     for (const fingerprint of protocols) {
       consumed += parseJA4(fingerprint).sectionA.protocol.length;
     }
-  });
+  }).run();
 
-  bench("all TLS versions", () => {
+  await bench("all TLS versions", () => {
     for (const fingerprint of versions) {
       consumed += parseJA4(fingerprint).sectionA.tlsVersion.length;
     }
-  });
+  }).run();
 
-  bench("100 distinct fingerprints", () => {
+  await bench("100 distinct fingerprints", () => {
     for (const fingerprint of batch) {
       consumed += parseJA4(fingerprint).sectionA.cipherSuiteCount;
     }
-  });
+  }).run();
 });
 
 afterAll(() => {
