@@ -6,9 +6,10 @@ description: >
   (sectionA_sectionB_sectionC), protocol/TLS version/SNI/ALPN field access,
   and error handling. Use when working with JA4 network fingerprints, TLS
   client fingerprinting, or security-related fingerprint analysis.
-type: core
-library: "@hckhanh/ja4"
-library_version: "0.1.8"
+metadata:
+  type: core
+  library: "@hckhanh/ja4"
+  library_version: "1.0.0"
 sources:
   - "hckhanh/ja4:src/parser.ts"
   - "hckhanh/ja4:src/types.ts"
@@ -127,6 +128,7 @@ Wrong:
 import { parseJA4 } from "@hckhanh/ja4";
 
 const result = parseJA4("t13d1516h2_8daaf6152771_02713d6af862");
+// @ts-expect-error: Deliberately demonstrate comparing a number with a string.
 if (result.sectionA.cipherSuiteCount === "15") {
   // never true — cipherSuiteCount is a number
 }
@@ -180,6 +182,7 @@ Wrong:
 import { parseJA4 } from "@hckhanh/ja4";
 
 const result = parseJA4("t13d1516h2_8daaf6152771_02713d6af862");
+// @ts-expect-error: Deliberately demonstrate using a raw SNI indicator.
 if (result.sectionA.sni === "d") {
   // never true — sni is "domain", not "d"
 }
