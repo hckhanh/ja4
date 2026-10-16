@@ -14,7 +14,7 @@ importers:
     devDependencies:
       '@codspeed/vitest-plugin':
         specifier: 6.0.0-beta.2
-        version: 6.0.0-beta.2(@voidzero-dev/vite-plus-core@0.2.9(@types/node@25.9.9)(jiti@2.6.1)(typescript@6.0.3)(yaml@2.9.0))(tinybench@2.9.0)(vitest@4.1.11)
+        version: 6.0.0-beta.2(@voidzero-dev/vite-plus-core@0.2.9(@types/node@25.9.9)(jiti@2.6.1)(typescript@6.0.3)(yaml@2.9.0))(debug@4.4.3)(tinybench@2.9.0)(vitest@4.1.11)
       '@tanstack/intent':
         specifier: 0.5.5
         version: 0.5.5
@@ -1345,9 +1345,9 @@ snapshots:
       fast-wrap-ansi: 0.2.2
       sisteransi: 1.0.5
 
-  '@codspeed/core@6.0.0-beta.2':
+  '@codspeed/core@6.0.0-beta.2(debug@4.4.3)':
     dependencies:
-      axios: 1.20.0
+      axios: 1.20.0(debug@4.4.3)
       find-up: 6.3.0
       form-data: 4.0.6
       node-gyp-build: 4.8.4
@@ -1356,9 +1356,9 @@ snapshots:
       - debug
       - supports-color
 
-  '@codspeed/vitest-plugin@6.0.0-beta.2(@voidzero-dev/vite-plus-core@0.2.9(@types/node@25.9.9)(jiti@2.6.1)(typescript@6.0.3)(yaml@2.9.0))(tinybench@2.9.0)(vitest@4.1.11)':
+  '@codspeed/vitest-plugin@6.0.0-beta.2(@voidzero-dev/vite-plus-core@0.2.9(@types/node@25.9.9)(jiti@2.6.1)(typescript@6.0.3)(yaml@2.9.0))(debug@4.4.3)(tinybench@2.9.0)(vitest@4.1.11)':
     dependencies:
-      '@codspeed/core': 6.0.0-beta.2
+      '@codspeed/core': 6.0.0-beta.2(debug@4.4.3)
       tinybench: 2.9.0
       vite: '@voidzero-dev/vite-plus-core@0.2.9(@types/node@25.9.9)(jiti@2.6.1)(typescript@6.0.3)(yaml@2.9.0)'
       vitest: 4.1.11(@types/node@25.9.9)(@vitest/browser-preview@4.1.10)(@voidzero-dev/vite-plus-core@0.2.9(@types/node@25.9.9)(jiti@2.6.1)(typescript@6.0.3)(yaml@2.9.0))
@@ -1823,9 +1823,9 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  axios@1.20.0:
+  axios@1.20.0(debug@4.4.3):
     dependencies:
-      follow-redirects: 1.16.1
+      follow-redirects: 1.16.1(debug@4.4.3)
       form-data: 4.0.6
       https-proxy-agent: 5.0.1
       proxy-from-env: 2.1.0
@@ -1922,7 +1922,9 @@ snapshots:
       locate-path: 7.2.0
       path-exists: 5.0.0
 
-  follow-redirects@1.16.1: {}
+  follow-redirects@1.16.1(debug@4.4.3):
+    optionalDependencies:
+      debug: 4.4.3
 
   form-data@4.0.6:
     dependencies:
