@@ -1,7 +1,14 @@
 catalog:
   vite: npm:@voidzero-dev/vite-plus-core@0.2.9
-  vitest: 4.1.11
+  vitest: 5.0.4
   vite-plus: 0.2.9
+minimumReleaseAgeExclude:
+  - "@codspeed/vitest-plugin@6.0.0"
+  - "@codspeed/core@6.0.0"
+  - "vitest@5.0.4"
+  - "@vitest/mocker@5.0.4"
+  - "@vitest/spy@5.0.4"
+  - "tinybench@6.2.2"
 overrides:
   vite: "catalog:"
   vitest: "catalog:"
