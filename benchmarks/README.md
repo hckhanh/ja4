@@ -10,7 +10,7 @@ outside timing; callbacks consume parsed fields. Assertions run after timing.
 - Node 24.22.0 and Vitest 5.0.4.
 - `@codspeed/vitest-plugin` 6.1.0, supporting Node 24 and Vitest 5.
 - Vite+ 0.2.9, retaining the existing test and build setup.
-- CodSpeed action 5.5.0 with runner **5.4.0**, cycle estimation enabled, and
+- CodSpeed action 5.5.0 with runner **5.5.0**, cycle estimation enabled, and
   allocation costs included.
 
 Vitest 5 benchmarks use the `bench` fixture inside an async `test`, awaiting
