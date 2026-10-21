@@ -47,7 +47,7 @@
     "prepare": "vp config && skills-npm"
   },
   "devDependencies": {
-    "@codspeed/vitest-plugin": "6.0.1",
+    "@codspeed/vitest-plugin": "6.1.0",
     "@tanstack/intent": "0.5.5",
     "@types/node": "25.9.9",
     "@typescript/native-preview": "7.0.0-dev.20260612.1",
