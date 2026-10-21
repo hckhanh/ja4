@@ -9,7 +9,7 @@ description: >
 metadata:
   type: core
   library: "@hckhanh/ja4"
-  library_version: "1.0.0"
+  library_version: "1.0.1"
 sources:
   - "hckhanh/ja4:src/parser.ts"
   - "hckhanh/ja4:src/types.ts"
