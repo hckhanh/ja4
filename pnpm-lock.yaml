@@ -16,8 +16,8 @@ importers:
         specifier: 6.1.0
         version: 6.1.0(@voidzero-dev/vite-plus-core@0.2.9(@types/node@25.9.9)(jiti@2.6.1)(typescript@6.0.3)(yaml@2.9.0))(tinybench@6.2.2)(vitest@5.0.5)
       '@tanstack/intent':
-        specifier: 0.5.5
-        version: 0.5.5
+        specifier: 0.5.6
+        version: 0.5.6
       '@types/node':
         specifier: 25.9.9
         version: 25.9.9
@@ -382,8 +382,8 @@ packages:
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
 
-  '@tanstack/intent@0.5.5':
-    resolution: {integrity: sha512-Ei5RqUWgV96HrezTEyDbScy0wZN+17dNo59Am8/3ncv0YIaIxApkiX5LkM488wxe4a1Imdi09nhjFxblxwLMSQ==}
+  '@tanstack/intent@0.5.6':
+    resolution: {integrity: sha512-9Ta/GMGPcqBIqlbrqeYyqBVKEP7XyAXy6nn90bPiE2oHB6KPgjEweUbHNXLQ6Pim01VtMMNf0dmUFMGKKHXmlw==}
     engines: {node: '>=20.12.0'}
     hasBin: true
 
@@ -1487,7 +1487,7 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
-  '@tanstack/intent@0.5.5': {}
+  '@tanstack/intent@0.5.6': {}
 
   '@testing-library/dom@10.4.1':
     dependencies:
