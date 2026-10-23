@@ -55,7 +55,7 @@
     "skills-npm": "1.2.1",
     "typescript": "6.0.3",
     "vite": "catalog:",
-    "vite-plus": "0.2.9",
+    "vite-plus": "1.1.0",
     "vitest": "catalog:"
   },
   "packageManager": "pnpm@10.34.7"

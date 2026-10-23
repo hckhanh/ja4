@@ -1,7 +1,7 @@
 catalog:
   vite: npm:@voidzero-dev/vite-plus-core@0.2.9
   vitest: 5.0.5
-  vite-plus: 0.2.9
+  vite-plus: 1.1.0
 minimumReleaseAgeExclude:
   - "@codspeed/vitest-plugin@6.1.0"
   - "@codspeed/core@6.1.0"
