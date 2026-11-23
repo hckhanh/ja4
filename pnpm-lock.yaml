@@ -13,8 +13,8 @@ importers:
   .:
     devDependencies:
       '@codspeed/vitest-plugin':
-        specifier: 6.1.0
-        version: 6.1.0(@voidzero-dev/vite-plus-core@0.3.3(@types/node@25.9.9)(jiti@2.6.1)(typescript@6.0.3)(yaml@2.9.0))(tinybench@6.2.2)(vitest@5.0.5)
+        specifier: 6.1.1
+        version: 6.1.1(@voidzero-dev/vite-plus-core@0.3.3(@types/node@25.9.9)(jiti@2.6.1)(typescript@6.0.3)(yaml@2.9.0))(tinybench@6.2.2)(vitest@5.0.5)
       '@tanstack/intent':
         specifier: 0.5.6
         version: 0.5.6
@@ -68,11 +68,11 @@ packages:
     resolution: {integrity: sha512-y7/yvZ2TPAnR9+jnc00klvNNLkJiXFFrQA/hlLCcxA9a2A4zQIOimyFQ9XfwYKiGD1fb5GY8vbKIIgO8d5Tb2A==}
     engines: {node: '>= 20.12.0'}
 
-  '@codspeed/core@6.1.0':
-    resolution: {integrity: sha512-lxFkexeuf6iOWUZmgCeuGSVgk0fKBbtnCVd3w3UWi3627/4t55FhA046LhFLzedCQUi6183s99DnM3/6TRjzHQ==}
+  '@codspeed/core@6.1.1':
+    resolution: {integrity: sha512-Lz9xqyeoHI2T7QoLjcJGFrKzyOJKzJM8/2kNRiCcMsqeLzntFpMXHj1No4efraWmdAG+6+7DZmKodrjh+9H6ng==}
 
-  '@codspeed/vitest-plugin@6.1.0':
-    resolution: {integrity: sha512-jYGZo8RSCIYD0G/+WWeZZUcQtGzz6Xl9gsdaElg9EQr5D99DbtDd2QxJYtA/9DWoWlXSP/EPR2OQR2UeHpYTSQ==}
+  '@codspeed/vitest-plugin@6.1.1':
+    resolution: {integrity: sha512-zzZGaUmpBgAypYbMyWtm79RkGKVgDlkNV5iOBUT8vKayvrdXm8XpfC4/FaTuydOhGBVbrpxIeneoY6fl00NkTg==}
     peerDependencies:
       tinybench: '>=2.9.0'
       vite: ^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
@@ -1068,8 +1068,8 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  axios@1.20.0:
-    resolution: {integrity: sha512-r8aOh8j9cGKpgQAqpzrUHnSIc6a59Y3Xf/cv8sy1DrHCkZHzQGEuoq1tARk6qSyDdtQGSDgpb9kFlruzPvrgwg==}
+  axios@1.21.1:
+    resolution: {integrity: sha512-6eI5Q/Y4u/Um9dDlsRoq5pY2rxnUTv+L4PpLitnbk/i4jb3MxLZ5CsN5Ih3IysbeRYK4pR+P7qfMsOQl9fwwFQ==}
 
   bumpp@11.1.0:
     resolution: {integrity: sha512-jdwOGMyX8JIqpQ0N2RMRR87DHZaoJnUtui5lU9LqFfFK5JC0H8qY9uWqXoa+dEWt/K7rOmmsoyiZB8RBM7RPBQ==}
@@ -1170,8 +1170,8 @@ packages:
       picomatch:
         optional: true
 
-  follow-redirects@1.16.1:
-    resolution: {integrity: sha512-FNvFGzoMLWmE6Yj9spb/zjd7yiNCHiAW9/Tg9CXrQ8wuu32HtlJOwWO11OJafl5FfY3DxTdQ0vj42zU1kvv5jg==}
+  follow-redirects@1.16.3:
+    resolution: {integrity: sha512-toOSoqN6d51Wjf1aOFJYcoVv1aND9rj/CwjLU0Vz40oDuSpWDayCeKe4JpL5NL0WdFvoOOCI3BRo69HahjbR1A==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'
@@ -1557,18 +1557,23 @@ packages:
 
   yuku-ast@0.9.5:
     resolution: {integrity: sha512-Q8qW8WwQnN5Cm0ZZivdRIfv0sRLTjUq0YumXJkw8CYN1aCdICH9rk4C47/4n6kA5EqDtlj+F608twoTSV2MwdQ==}
+    deprecated: 'Yuku is now one package with one core. Use "yuku" instead: https://yuku.fyi/javascript/. Existing installs keep working but get no more fixes.'
 
   yuku-codegen@0.5.48:
     resolution: {integrity: sha512-p7HxD5Xl4jzDzqMrGePAOeSHmRY4g58h4HuGq15weQFPxuPWd/W6e7nqp/+Lea6JfpOdBwJOAyXFqIZ/J9Zfnw==}
+    deprecated: 'Yuku is now one package with one core. Use "yuku" instead: https://yuku.fyi/javascript/. Existing installs keep working but get no more fixes.'
 
   yuku-codegen@0.9.5:
     resolution: {integrity: sha512-zGUVyDpSK4b6c9B0yyxi2P0wujn1XZTbG9dCb7d6gyAoP63EMgyLzUwPUvwxPG5jgYqhlI7w+S3oCyapqGr4PA==}
+    deprecated: 'Yuku is now one package with one core. Use "yuku" instead: https://yuku.fyi/javascript/. Existing installs keep working but get no more fixes.'
 
   yuku-parser@0.5.48:
     resolution: {integrity: sha512-OWBfhrpgK9+/4+IXG9oT8Bao4AhViQA7vdyNNH7EUg8dQYgwa70XtIBWTpCEme1P1ECyoDNYkn0wT63f8XRcVA==}
+    deprecated: 'Yuku is now one package with one core. Use "yuku" instead: https://yuku.fyi/javascript/. Existing installs keep working but get no more fixes.'
 
   yuku-parser@0.9.5:
     resolution: {integrity: sha512-IBnAdNVMswWbJcM7woPluOudectJzFjJ1N8jVRxP9Uq4CIv5hZdBIcdmtRbFDYF/Ph2j2gVup4YJ4N9mh0jYFA==}
+    deprecated: 'Yuku is now one package with one core. Use "yuku" instead: https://yuku.fyi/javascript/. Existing installs keep working but get no more fixes.'
 
 snapshots:
 
@@ -1596,9 +1601,9 @@ snapshots:
       fast-wrap-ansi: 0.2.2
       sisteransi: 1.0.5
 
-  '@codspeed/core@6.1.0':
+  '@codspeed/core@6.1.1':
     dependencies:
-      axios: 1.20.0
+      axios: 1.21.1
       form-data: 4.0.6
       node-gyp-build: 4.8.4
       stack-trace: 1.0.0-pre2
@@ -1606,9 +1611,9 @@ snapshots:
       - debug
       - supports-color
 
-  '@codspeed/vitest-plugin@6.1.0(@voidzero-dev/vite-plus-core@0.3.3(@types/node@25.9.9)(jiti@2.6.1)(typescript@6.0.3)(yaml@2.9.0))(tinybench@6.2.2)(vitest@5.0.5)':
+  '@codspeed/vitest-plugin@6.1.1(@voidzero-dev/vite-plus-core@0.3.3(@types/node@25.9.9)(jiti@2.6.1)(typescript@6.0.3)(yaml@2.9.0))(tinybench@6.2.2)(vitest@5.0.5)':
     dependencies:
-      '@codspeed/core': 6.1.0
+      '@codspeed/core': 6.1.1
       tinybench: 6.2.2
       vite: '@voidzero-dev/vite-plus-core@0.3.3(@types/node@25.9.9)(jiti@2.6.1)(typescript@6.0.3)(yaml@2.9.0)'
       vitest: 5.0.5(@types/node@25.9.9)(@vitest/browser-preview@4.1.10)(@voidzero-dev/vite-plus-core@0.3.3(@types/node@25.9.9)(jiti@2.6.1)(typescript@6.0.3)(yaml@2.9.0))
@@ -2175,9 +2180,9 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  axios@1.20.0:
+  axios@1.21.1:
     dependencies:
-      follow-redirects: 1.16.1
+      follow-redirects: 1.16.3
       form-data: 4.0.6
       https-proxy-agent: 5.0.1
       proxy-from-env: 2.1.0
@@ -2269,7 +2274,7 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.7
 
-  follow-redirects@1.16.1: {}
+  follow-redirects@1.16.3: {}
 
   form-data@4.0.6:
     dependencies:
