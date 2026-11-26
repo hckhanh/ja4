@@ -1,6 +1,6 @@
 catalog:
   vite: npm:@voidzero-dev/vite-plus-core@0.3.3
-  vitest: 5.0.5
+  vitest: 5.1.1
   vite-plus: 0.2.9
 minimumReleaseAgeExclude:
   - "@codspeed/vitest-plugin@6.1.0"
